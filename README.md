@@ -13,15 +13,16 @@ Séries Adviser est une application qui nous recommande des séries à visionner
 
 ### Maquette
 
-![Maquette du site en desktop](./maquette/maquette%20séries%20adviser.png "Maquette Séries Adviser")
+![Maquette du site en desktop](./maquette/maquette%20séries%20adviser.jpg "Maquette Séries Adviser")
 
 ### Instructions
 
-- Réaliser le site avec React
+- Réaliser le site avec **React**
 - Un dossier par composant
 - Chaque dossier devra contenir le JSX, le CSS et le JS, si besoin, du composant en question
 - Récupérer une API sur [The Movie Database](https://www.themoviedb.org/). [Documentation](https://developer.themoviedb.org/docs/getting-started)
-- Utilisation de Bootstrap pour le responsive
+- Utilisation de **SASS** pour le CSS
+- Utilisation de **Bootstrap** pour le responsive
 
 ### Tester le projet
 

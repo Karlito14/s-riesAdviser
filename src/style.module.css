@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 25px;
+}
+.main__header {
+  flex: 1;
+}
+.main__details {
+  flex: 2;
+}
+.main__recommandations {
+  flex: 1;
+}
+
+/*# sourceMappingURL=style.module.css.map */
