@@ -1,4 +1,3 @@
-import style from './style.module.css';
 import { StarFill, StarHalf, Star as StarEmpty} from 'react-bootstrap-icons';
 
 export const StarRating = ({rating}) => {
