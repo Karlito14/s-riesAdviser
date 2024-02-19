@@ -1,5 +1,5 @@
-import './global.css';
-import style from './style.module.css';
+import './style/global.css';
+import style from './style/style.module.css';
 import { BASE_BACKDROP_PATH } from './config/config';
 import { seriesAdviserAPI } from './api/api';
 import { useEffect, useState } from 'react';

@@ -3,13 +3,30 @@
     font-size: 35px;
 }
 
+.rating_container{
+    display: flex;
+
+    &__rating{
+        margin: 3px;
+        margin-left: 5px;
+
+        &__count {
+            font-size: 13px;
+            font-weight: 300;
+        }
+    }
+}
+
 .description {
     font-family: Roboto;
     font-weight: 400;
     font-size: 20px;
-    height: 120px;
     overflow-y: hidden;
     margin-top: 10px;
+
+    @media(max-width: 905px) {
+        height: 120px;
+    }
 
     &:hover {
         overflow-y: auto;
