@@ -1,0 +1,18 @@
+.title {
+  font-weight: 400;
+  font-size: 35px;
+}
+
+.description {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 20px;
+  height: 120px;
+  overflow-y: hidden;
+  margin-top: 10px;
+}
+.description:hover {
+  overflow-y: auto;
+}
+
+/*# sourceMappingURL=style.module.css.map */
