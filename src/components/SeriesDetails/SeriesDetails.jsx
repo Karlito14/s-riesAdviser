@@ -1,6 +1,6 @@
 import { Date } from '../Date/Date';
 import { StarRating } from '../StarRating/StarRating';
-import style from './style.module.css';
+import style from './style.module.scss';
 
 export const SeriesDetails = ({ serie }) => {
     const rating = (serie.vote_average / 2).toFixed(2);

@@ -1,26 +1,27 @@
-import './style/global.css';
-import style from './style/style.module.css';
+import './sass/global.scss';
+import style from './sass/style.module.scss';
 import { BASE_BACKDROP_PATH } from './config/config';
 import { seriesAdviserAPI } from './api/api';
 import { useEffect, useState } from 'react';
 import { SeriesDetails } from './components/SeriesDetails/SeriesDetails';
 import { Logo } from './components/Logo/Logo';
 import logo from '../src/assets/images/logo.png';
+import { SeachBar } from './components/SearchBar/SearchBar';
 
 export const App =  () => {
 
     const [currentSerie, setCurrentSerie] = useState();    
 
     // Je récupère la série et la met dans mon state
-    const fetchPopulars = async () => {
-        const populars = await seriesAdviserAPI.fetchPopular();
+    const fetchTopRated = async () => {
+        const populars = await seriesAdviserAPI.fetchTopRated();
         if(populars.length > 0) {
             setCurrentSerie(populars[0]);
         }
     }
 
     useEffect(() => {
-        fetchPopulars();
+        fetchTopRated();
     }, []);
     console.log(currentSerie)
     // Je définis d'abord un fond noir le temps que ma promesse s'exécute puis l'image de la série
@@ -31,6 +32,12 @@ export const App =  () => {
             return 'black';
         }
     };
+
+    const SearchSerie = async (name) => {
+        const series = await seriesAdviserAPI.searchSerie(name);
+        const serie = series[0];
+        setCurrentSerie(serie);
+    }
     
     return (
         <div 
@@ -43,7 +50,7 @@ export const App =  () => {
                         <Logo title='Series Adviser' subtitle='Find your favorite show' image={logo} />
                     </div>
                     <div className='col-sm-12 col-md-4'>
-                        <input type='text'/>
+                        <SeachBar onSubmit={SearchSerie} />
                     </div>
                 </div>
             </div>

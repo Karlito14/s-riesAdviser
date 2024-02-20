@@ -1,0 +1,43 @@
+.container {
+    position: relative;
+
+    @media(max-width: 768px) {
+        width: 70%;
+        margin: 20px auto;
+    }
+}
+
+.icon {
+    position: absolute;
+    top: 7px;
+    left: 12px;
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+.input {
+    border-radius: 30px;
+    background-color: #777575;
+    width: 100%;
+    font-weight: 100;
+    border-color: transparent;
+    padding: 18px 18px 18px 18px;
+    height: 30px;
+    font-size: 20px;
+    transition: all 0.5s;
+    outline: none;
+    color: white;
+
+
+    &:focus {
+        padding-left: 50px;
+        border: 2px solid white;
+        & + .icon {
+            opacity: 1;
+        }
+    }
+
+    &::placeholder {
+        color: rgb(221, 218, 218);
+    }
+}
