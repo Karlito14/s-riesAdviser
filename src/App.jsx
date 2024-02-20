@@ -4,6 +4,8 @@ import { BASE_BACKDROP_PATH } from './config/config';
 import { seriesAdviserAPI } from './api/api';
 import { useEffect, useState } from 'react';
 import { SeriesDetails } from './components/SeriesDetails/SeriesDetails';
+import { Logo } from './components/Logo/Logo';
+import logo from '../src/assets/images/logo.png';
 
 export const App =  () => {
 
@@ -38,10 +40,11 @@ export const App =  () => {
             <div className={style.main__header}>
                 <div className='row'>
                     <div className='col-4'>
-                        <div>Logo</div>
-                        <div>Sous titres</div>
+                        <Logo title='Series Adviser' subtitle='Find your favorite show' image={logo} />
                     </div>
-                    <div className='col-sm-12 col-md-4'><input type='text'/></div>
+                    <div className='col-sm-12 col-md-4'>
+                        <input type='text'/>
+                    </div>
                 </div>
             </div>
             <div className={style.main__details}>
