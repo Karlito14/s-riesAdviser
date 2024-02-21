@@ -14,7 +14,7 @@ export const SeachBar = ({onSubmit}) => {
     }
 
     return (
-        <div className={style.container}>
+        <form className={style.container}>
             <input 
                 className={style.input} 
                 type='text' 
@@ -22,6 +22,6 @@ export const SeachBar = ({onSubmit}) => {
                 onKeyDown={(event) => submit(event)}
             />
             <SearchIcon className={style.icon} size={27} />
-        </div>
+        </form>
     )
 }

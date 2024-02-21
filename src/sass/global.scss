@@ -5,5 +5,13 @@ body {
     font-family: $font-family-primary;
     margin: 0 auto;
     padding: 0;
-    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba($color: #000000, $alpha: 0.6);
+    border-radius: 10px;
 }

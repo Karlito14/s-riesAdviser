@@ -8,6 +8,7 @@ import { Logo } from './components/Logo/Logo';
 import logo from '../src/assets/images/logo.png';
 import { SeachBar } from './components/SearchBar/SearchBar';
 import { TvShowListItem } from './components/TvShowListItem/TvShowListItem';
+import { TvShowList } from './components/TvShowList/TvShowList';
 
 export const App =  () => {
 
@@ -42,7 +43,7 @@ export const App =  () => {
     }
 
     const [currentSerie, setCurrentSerie] = useState();  
-    const [recommandationList, setRecommandationList] = useState();
+    const [recommandationList, setRecommandationList] = useState([]);
     
     // Je récupère la série et la met dans mon state
     useEffect(() => {
@@ -69,8 +70,10 @@ export const App =  () => {
 
                 const recommandationList = await seriesAdviserAPI.fetchRecommandations(currentSerie.id);
 
-                if(recommandationList.length > 0) {
-                    setRecommandationList(recommandationList.slice(0, 10));
+                const results = recommandationList.results;
+
+                if(results.length > 0) {
+                    setRecommandationList(results.slice(0, 10));
                 }
 
             } catch (error) {
@@ -106,15 +109,13 @@ export const App =  () => {
     const setSerieFromRecommandation = (serie) => {
         setCurrentSerie(serie);
     };
-    
-    console.log(currentSerie)
-    
+
     return (
         <div 
             className={style.main}
             style={{background: getBackground(currentSerie)}}
         >
-            <div className={style.main__header}>
+            <header className={style.main__header}>
                 <div className='row'>
                     <div className='col-4'>
                         <Logo title='Series Adviser' subtitle='Find your favorite show' image={logo} />
@@ -123,17 +124,14 @@ export const App =  () => {
                         <SeachBar onSubmit={SearchSerie} />
                     </div>
                 </div>
-            </div>
-            <div className={style.main__details} id='main'>
+            </header>
+            <main className={style.main__details} id='main'>
                 {currentSerie && <SeriesDetails serie={currentSerie}/>}
-            </div>
-            <div className={style.main__recommandations}>
-                {currentSerie && 
-                <TvShowListItem 
-                    serie={currentSerie} 
-                    onClick={setSerieFromRecommandation} 
-                />}
-            </div>
+            </main>
+            <footer className={style.main__recommandations}>
+                {recommandationList && 
+                <TvShowList seriesList={recommandationList} setSerie={setSerieFromRecommandation} />}
+            </footer>
         </div>
     )
 }
