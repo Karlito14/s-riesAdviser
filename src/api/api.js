@@ -15,4 +15,10 @@ export class seriesAdviserAPI {
         const series = result.results;
         return series;
     }
+
+    static async setSerieFromRecommandation(id) {
+        const response = await fetch(`${BASE_URL}tv/${id}/recommendations`, OPTIONS);
+        const result = await response.json();
+        console.log(result)
+    }
 }

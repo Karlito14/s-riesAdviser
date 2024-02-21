@@ -7,6 +7,7 @@ import { SeriesDetails } from './components/SeriesDetails/SeriesDetails';
 import { Logo } from './components/Logo/Logo';
 import logo from '../src/assets/images/logo.png';
 import { SeachBar } from './components/SearchBar/SearchBar';
+import { TvShowListItem } from './components/TvShowListItem/TvShowListItem';
 
 export const App =  () => {
 
@@ -20,7 +21,7 @@ export const App =  () => {
         }
     }
 
-    function errorSerie () {
+    function errorSerie (message) {
         const main = document.querySelector('#main');
 
         let paragraphe = document.querySelector('#paragraphe-error');
@@ -28,38 +29,37 @@ export const App =  () => {
         if(!paragraphe) {
             paragraphe = document.createElement('p');
             paragraphe.setAttribute('id', 'paragraphe-error');
-            paragraphe.innerText = `Le serveur connait actuellement des perturbations. Veuillez réessayer plus tard.`;
+            paragraphe.innerText = message;
             main.appendChild(paragraphe);
         };
         
-
         main.style.display = 'flex';
         main.style.justifyContent = 'center';
         main.style.alignItems = 'center';
-        paragraphe.style.fontSize = '30px';
-        
+        paragraphe.style.fontSize = '30px'; 
     }
 
-    const [currentSerie, setCurrentSerie] = useState();    
-
+    const [currentSerie, setCurrentSerie] = useState(); 
+    
+    const [seriesRecommandation, setSeriesrecommandation] = useState();
+    
     // Je récupère la série et la met dans mon state
-    const fetchTopRated = async () => {
-        try {
-            clearError();
-
-            const populars = await seriesAdviserAPI.fetchTopRated();
-            if(populars.length > 0) {
-                setCurrentSerie(populars[0]);
-            }
-        } catch (error) {
-            errorSerie();
-        } 
-    }
-
     useEffect(() => {
-        fetchTopRated();
+        const fetchTopRated = async () => {
+            try {
+                clearError();
+    
+                const populars = await seriesAdviserAPI.fetchTopRated();
+                if(populars.length > 0) {
+                    setCurrentSerie(populars[0]);
+                }
+            } catch (error) {
+                errorSerie('Le serveur connait actuellement des perturbations. Veuillez réessayer plus tard.');
+            } 
+        }
+        fetchTopRated();      
     }, []);
-    console.log(currentSerie)
+    
     // Je définis d'abord un fond noir le temps que ma promesse s'exécute puis l'image de la série
     const getBackground = (serie) => {
         if(serie) {
@@ -76,9 +76,15 @@ export const App =  () => {
             setCurrentSerie(serie);
             clearError();
         } catch (error) {
-            errorSerie();
+            errorSerie('Erreur durant la recherche de séries. Veuillez réessayer plus tard.');
         } 
     }
+
+    const setSerieFromRecommandation = (serie) => {
+        setCurrentSerie(serie);
+    };
+    
+    console.log(currentSerie)
     
     return (
         <div 
@@ -98,7 +104,9 @@ export const App =  () => {
             <div className={style.main__details} id='main'>
                 {currentSerie && <SeriesDetails serie={currentSerie}/>}
             </div>
-            <div className={style.main__recommandations}></div>
+            <div className={style.main__recommandations}>
+                {currentSerie && <TvShowListItem serie={currentSerie} onClick={setSerieFromRecommandation} />}
+            </div>
         </div>
     )
 }
