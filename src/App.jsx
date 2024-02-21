@@ -11,6 +11,7 @@ import { TvShowListItem } from './components/TvShowListItem/TvShowListItem';
 
 export const App =  () => {
 
+    // effacement des erreur du catch si tout va bien
     function clearError () {
         const paragraphe = document.querySelector('#paragraphe-error');
         const main = document.querySelector('#main');
@@ -21,6 +22,7 @@ export const App =  () => {
         }
     }
 
+    // Gestion des erreurs du catch dans le try
     function errorSerie (message) {
         const main = document.querySelector('#main');
 
@@ -39,9 +41,8 @@ export const App =  () => {
         paragraphe.style.fontSize = '30px'; 
     }
 
-    const [currentSerie, setCurrentSerie] = useState(); 
-    
-    const [seriesRecommandation, setSeriesrecommandation] = useState();
+    const [currentSerie, setCurrentSerie] = useState();  
+    const [recommandationList, setRecommandationList] = useState();
     
     // Je récupère la série et la met dans mon state
     useEffect(() => {
@@ -59,6 +60,27 @@ export const App =  () => {
         }
         fetchTopRated();      
     }, []);
+
+    // récupérer les séries recommandées selon la série sélectionné
+    useEffect(() => {
+        const getRecommandations = async () => {
+            try {
+                clearError();
+
+                const recommandationList = await seriesAdviserAPI.fetchRecommandations(currentSerie.id);
+
+                if(recommandationList.length > 0) {
+                    setRecommandationList(recommandationList.slice(0, 10));
+                }
+
+            } catch (error) {
+                errorSerie('Le serveur connait actuellement des perturbations. Veuillez réessayer plus tard.');
+            }  
+        }
+        if(currentSerie) {
+            getRecommandations();
+        }
+    }, [currentSerie]);
     
     // Je définis d'abord un fond noir le temps que ma promesse s'exécute puis l'image de la série
     const getBackground = (serie) => {
@@ -69,6 +91,7 @@ export const App =  () => {
         }
     };
 
+    // recherche série par la barre de recherche
     const SearchSerie = async (name) => {
         try {
             const series = await seriesAdviserAPI.searchSerie(name);
@@ -105,7 +128,11 @@ export const App =  () => {
                 {currentSerie && <SeriesDetails serie={currentSerie}/>}
             </div>
             <div className={style.main__recommandations}>
-                {currentSerie && <TvShowListItem serie={currentSerie} onClick={setSerieFromRecommandation} />}
+                {currentSerie && 
+                <TvShowListItem 
+                    serie={currentSerie} 
+                    onClick={setSerieFromRecommandation} 
+                />}
             </div>
         </div>
     )

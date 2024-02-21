@@ -11,6 +11,7 @@
     &__title {
         text-overflow: ellipsis;
         overflow: hidden;
+        white-space: nowrap;
         font-size: 16px;
         position: absolute;
         padding-left: 20px;
