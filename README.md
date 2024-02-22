@@ -1,4 +1,4 @@
-# Séries Adviser
+# [Séries Adviser](https://series-adviser.netlify.app/)
 
 Séries Adviser est une application qui recommande des séries à visionner
 
@@ -27,6 +27,7 @@ Séries Adviser est une application qui recommande des séries à visionner
 
 Pour tester le projet :
 
+Cliquez [ici](https://series-adviser.netlify.app/) ou :
 - Cloner le github
 - Ouvrir votre terminal et taper la commande suivante **npm i** afin d'installer les dépendances dont on a besoin
 - Taper **npm run start** pour lancer le projet et le visualiser
