@@ -24,6 +24,8 @@
     overflow-y: hidden;
     margin-top: 10px;
     max-width: 1000px;
+    scrollbar-color: dark;
+    scrollbar-width: thin;
 
     @media(max-width: 905px) {
         max-height: 120px;
