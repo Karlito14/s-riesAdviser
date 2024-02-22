@@ -1,6 +1,6 @@
 # Séries Adviser
 
-Séries Adviser est une application qui nous recommande des séries à visionner
+Séries Adviser est une application qui recommande des séries à visionner
 
 ### Objectifs
 
@@ -20,7 +20,6 @@ Séries Adviser est une application qui nous recommande des séries à visionner
 - Réaliser le site avec **React**
 - Un dossier par composant
 - Chaque dossier devra contenir le JSX, le CSS et le JS, si besoin, du composant en question
-- Récupérer une API sur [The Movie Database](https://www.themoviedb.org/). [Documentation](https://developer.themoviedb.org/docs/getting-started)
 - Utilisation de **SASS** pour le CSS
 - Utilisation de **Bootstrap** pour le responsive
 
@@ -31,5 +30,7 @@ Pour tester le projet :
 - Cloner le github
 - Ouvrir votre terminal et taper la commande suivante **npm i** afin d'installer les dépendances dont on a besoin
 - Taper **npm run start** pour lancer le projet et le visualiser
+- Récupérer une API sur [The Movie Database](https://www.themoviedb.org/). [Documentation](https://developer.themoviedb.org/docs/getting-started). 
+- Créer une variable d'environnement "REACT_APP_API_KEY" avec l'API fourni par TMDB.
 
 Réalisé par [Carlos Leiroz](https://www.linkedin.com/in/carlos-leiroz/)

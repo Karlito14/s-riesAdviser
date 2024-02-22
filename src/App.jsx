@@ -7,7 +7,6 @@ import { SeriesDetails } from './components/SeriesDetails/SeriesDetails';
 import { Logo } from './components/Logo/Logo';
 import logo from '../src/assets/images/logo.png';
 import { SeachBar } from './components/SearchBar/SearchBar';
-import { TvShowListItem } from './components/TvShowListItem/TvShowListItem';
 import { TvShowList } from './components/TvShowList/TvShowList';
 
 export const App =  () => {
