@@ -5,7 +5,7 @@ Séries Adviser est une application qui recommande des séries à visionner
 ### Objectifs
 
 - Créer une application qui affiche des séries dynamiquement
-- Affichae par défaut de la série la plus populaire
+- Affichage par défaut de la série la plus populaire du moment
 - Barre de recherche pour trouver une série
 - Affichage du titre, descriptif, note et image en arrière plan de la série
 - Une liste de recommandations de séries selon la série choisie
